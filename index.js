@@ -10,7 +10,7 @@ app.use(express.json());
 
 //const port = 5000 //port on vps
 const port = 10000 //port on render
-const allowedOrigins = ['http://localhost:5173', 'https://localhost:5173', 'https://localhost:5174','https://app.seedpad.io', 'https://seedpad-frontend.vercel.app', "cvc-frontend.vercel.app","https://marv-vs-graf.vercel.app"]; // Add your domain here if you start using one
+const allowedOrigins = ['http://localhost:5173', 'https://localhost:5173', 'https://localhost:5174', "http://localhost:5174",'https://app.seedpad.io', 'https://seedpad-frontend.vercel.app', "cvc-frontend.vercel.app","https://marv-vs-graf.vercel.app"]; // Add your domain here if you start using one
 
 app.use(cors({
     origin: function (origin, callback) {
