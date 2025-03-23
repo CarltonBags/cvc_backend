@@ -62,7 +62,7 @@ app.post("/api/addUser", async (req,res)=>{
 app.get("/api/getUsers", async(req,res) =>{
     try{
         const users = await User.find()
-        res(users)
+        res.json(users)
 
     }catch(e){console.log(e)}
 })
