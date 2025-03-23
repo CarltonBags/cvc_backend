@@ -67,3 +67,7 @@ app.get("/api/getUsers", async(req,res) =>{
 
     }catch(e){console.log(e)}
 })
+
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
