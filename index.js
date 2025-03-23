@@ -48,10 +48,19 @@ app.post("/api/addUser", async (req,res)=>{
             return res.status(400).json({ success: false, message: "Name is required" });
         }
 
-        const users = await User.find()
-        users.push(name)
-        await users.save()
-        
+        const user = await User.findOne();  // This gets the first document, or null if no document exists
+
+        if (!user) {
+          // If no document exists, create a new one
+          const newUser = new User({ name: [name] });
+          await newUser.save();
+        } else {
+          // If a document exists, push the new name to the existing array
+          user.name.push(name);
+          await user.save();  // Save the updated document
+        }
+    
+
         res.json({ success: true, message: "successfully added" });
 
     }catch(e){
