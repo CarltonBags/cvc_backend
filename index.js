@@ -47,14 +47,14 @@ app.post("/api/addUser", async (req,res)=>{
             return res.status(400).json({ success: false, message: "Name is required" });
         }
 
-        await User.update(
+        await User.updateOne(
         {},
         { $push: { name: name } })
         res.json({ success: true, message: "successfully added" });
 
     }catch(e){
         console.log(e)
-        res(500).json({success: false, message: "something went wrong"})
+        res.status(500).json({success: false, message: "something went wrong"})
     }
 
 })
