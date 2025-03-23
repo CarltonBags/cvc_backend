@@ -43,13 +43,15 @@ const User = mongoose.model("User", user)
 app.post("/api/addUser", async (req,res)=>{
     try{
         const {name} = req.body
+        console.log("name", name)
         if (!name) {
             return res.status(400).json({ success: false, message: "Name is required" });
         }
 
-        await User.updateOne(
-        {},
-        { $push: { name: name } })
+        const users = await User.find()
+        users.push(name)
+        await users.save()
+        
         res.json({ success: true, message: "successfully added" });
 
     }catch(e){
